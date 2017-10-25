@@ -1,13 +1,13 @@
 # Overtime App
 
-# MVP: Company needs documentation that salaried employees did/did not get overtime each week.
+## MVP: Company needs documentation that salaried employees did/did not get overtime each week.
 
-# Models Used
+## Models Used
 - Post => date:date rationale:text
 - User => Devise
 - AdminUser => STI
 
-# Features
+## Features
 - Approval Workflow
 - SMS via Twilio
 - Admin dashboard
@@ -15,4 +15,4 @@
 - Documentation of employee overtime
 
 ## UI:
-Bootstrap => formatting 
+Bootstrap => formatting
