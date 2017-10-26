@@ -16,3 +16,6 @@
 
 ## UI:
 Bootstrap => formatting
+
+## refactor todos:
+- refactor user association integration test in post spec 
