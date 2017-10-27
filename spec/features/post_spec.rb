@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'navigate' do
+describe 'Navigate' do
   before do
       user = FactoryGirl.create(:user)
       login_as(user, :scope => :user)
@@ -22,9 +22,7 @@ describe 'navigate' do
 
     it 'has a list of posts' do
       post1 = FactoryGirl.create(:post)
-      p post1
       post2 = FactoryGirl.create(:second_post)
-      p post2
       expect(page).to have_content(/post1|post1|/)
     end
   end
@@ -51,6 +49,26 @@ describe 'navigate' do
       click_on "Save"
 
       expect(User.last.posts.last.rationale).to eq("User_Association")
+    end
+  end
+
+  describe 'edit' do
+    before do
+      @post = FactoryGirl.create(:post)
+    end
+    it "can be reached by clicking edit on index page" do
+      post = FactoryGirl.create(:post)
+      visit posts_path
+      click_link ("edit_#{post.id}")
+      expect(page.status_code).to eq(200)
+    end
+
+    it "can be edited" do
+      visit edit_post_path(@post)
+      fill_in 'post[date]', with: Date.today
+      fill_in 'post[rationale]', with: "New Content"
+      click_on "Save"
+      expect(page).to have_content("New Content")
     end
   end
 end
