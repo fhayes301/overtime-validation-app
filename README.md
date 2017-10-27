@@ -15,8 +15,8 @@
 - Documentation of employee overtime
 
 ## UI:
-- Bootstrap => formatting
-- Update form styling
+- x Bootstrap => formatting
+- x Update form styling
 - Font Awesome icons 
 
 ## refactor todos:
