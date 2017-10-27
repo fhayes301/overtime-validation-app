@@ -15,7 +15,9 @@
 - Documentation of employee overtime
 
 ## UI:
-Bootstrap => formatting
+- Bootstrap => formatting
+- Update form styling
+- Font Awesome icons 
 
 ## refactor todos:
-- refactor user association integration test in post spec 
+- refactor user association integration test in post spec
