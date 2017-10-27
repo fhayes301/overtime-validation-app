@@ -56,6 +56,7 @@ describe 'Navigate' do
     it 'has a link from the homepage' do
       visit root_path
       click_link ("new_post_from_nav")
+      expect(page.status_code).to eq(200)
     end
   end
 
@@ -76,6 +77,15 @@ describe 'Navigate' do
       fill_in 'post[rationale]', with: "New Content"
       click_on "Save"
       expect(page).to have_content("New Content")
+    end
+  end
+
+  describe 'delete' do
+    it 'can delete a post' do
+      @post = FactoryGirl.create(:post)
+      visit posts_path
+      click_link ("delete_post_#{@post.id}_from_index")
+      expect(page.status_code).to eq(200)
     end
   end
 end
