@@ -4,8 +4,8 @@ require 'rails_helper'
 
 describe 'Navigate' do
   before do
-      user = FactoryGirl.create(:user)
-      login_as(user, :scope => :user)
+      @user = FactoryGirl.create(:user)
+      login_as(@user, :scope => :user)
       visit new_post_path
   end
 
@@ -21,9 +21,22 @@ describe 'Navigate' do
     end
 
     it 'has a list of posts' do
-      post1 = FactoryGirl.create(:post)
-      post2 = FactoryGirl.create(:second_post)
+      post1 = FactoryGirl.build_stubbed(:post)
+      post2 = FactoryGirl.build_stubbed(:second_post)
       expect(page).to have_content(/post1|post1|/)
+    end
+
+    it 'has a scope so that only post creaters can see their posts' do
+      post1 = Post.create(date: Date.today, rationale: "asdf", user_id: @user.id )
+      post2 = Post.create(date: Date.today, rationale: "asdf", user_id: @user.id )
+
+      other_user = User.create({first_name: "Non", last_name: "Authorized",
+        email: "nonauth@user.com", password: "password", password_confirmation: "password"})
+      post_from_another_user = Post.create(date: Date.today, rationale: "This post shouldn't be here", user_id: other_user.id )
+
+      visit posts_path
+
+      expect(page).to_not have_content(/This post shouldn't be here/)
     end
   end
 
@@ -90,6 +103,7 @@ describe 'Navigate' do
   describe 'delete' do
     it 'can delete a post' do
       @post = FactoryGirl.create(:post)
+      @post.update(user_id: @user.id)
       visit posts_path
       click_link ("delete_post_#{@post.id}_from_index")
       expect(page.status_code).to eq(200)
