@@ -3,6 +3,8 @@ module PostsHelper
     status_span_generator status
   end
 
+  private
+
   def status_span_generator status
     case status
     when 'submitted'
@@ -13,4 +15,5 @@ module PostsHelper
         content_tag(:span, status.titleize, class: 'label label-danger')
     end
   end
+  
 end
