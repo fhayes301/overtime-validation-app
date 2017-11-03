@@ -42,3 +42,4 @@ gem 'gritter', '1.2.0' # alerts
 gem 'administrate'
 gem 'bourbon'
 gem 'pundit', '~> 1.1' # interface for managing permissions
+gem 'twilio-ruby', '~> 4.11', '>= 4.11.1'
