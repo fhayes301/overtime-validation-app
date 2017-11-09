@@ -2,12 +2,13 @@
 	<div class='pending-homepage row'>
     <h2> Items Pending Approval </h2>
     <br>
-
     <%= render partial: 'pending_approval', locals: { pending_approvals: @pending_approvals } %>
+  </div>
 
 	<div class='pending-homepage'>
-		<div>
-			<p>asdf</p>
+		<h2> Confirmation Log</h2>
+
+		<%= render partial: 'confirmation_log', locals: { pending_approvals: @pending_approvals } %>
 		</div>
 	</div>
 </div>
