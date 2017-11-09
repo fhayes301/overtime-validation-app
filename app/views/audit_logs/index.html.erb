@@ -1,4 +1,4 @@
-<h1> Posts </h1>
+<h1> Audit Log Dashboard </h1>
 
 <table class="table table-striped table-hover">
 	<thead>
@@ -7,30 +7,25 @@
 				#
 			</th>
 			<th>
-				Overtime Requested
+				Employee
 			</th>
 			<th>
-				Date
+				Week Starting
 			</th>
       <th>
-        User
+        Confirmed At
       </th>
 			<th>
-				Rationale
-			</th>
-			<th>
-				status
+				Status
 			</th>
 			<th></th>
 			<th></th>
 			<th></th>
 		</tr>
 	</thead>
-	<tbody id="posts">
-		<%= render @posts %>
+	<tbody id="audit_logs">
+		<%= render @audit_logs %>
 	</tbody>
 </table>
 
-<div id='paginator'>
-	<%= paginate @posts, remote: true %>
-</div>
+<%= paginate @audit_logs, remote: true %>
